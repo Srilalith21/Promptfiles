@@ -15,7 +15,6 @@ function postToServer(data) {
     console.log("Operaion failed");
     return;
   }
-  console.log(data)
   const server = fetch("http://localhost:9090/formdata", {
     method: "POST",
     headers: {
@@ -25,9 +24,12 @@ function postToServer(data) {
   });
   server
     .then((res) => {
-      console.log(res.statusText);
+      if(res.status == 200){
+        alert("Data saved Successfully")
+      }
     })
     .catch((res) => {
       console.log(res);
+      alert("Please re-enter your data")
     });
 }
